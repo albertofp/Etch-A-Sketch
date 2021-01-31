@@ -29,3 +29,10 @@ function changeColor(e){
   const blue = Math.floor(Math.random() * 256);
   e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
+
+
+function clearGrid(){
+  gridItem.forEach(item => {
+    item.style = 'backgroundColor: rgba(255,255,255,1) ';
+  })
+}
