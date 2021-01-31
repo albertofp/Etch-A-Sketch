@@ -30,9 +30,16 @@ function changeColor(e){
   e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
-
+//Turns the whole grid white(effectively clearing it)
 function clearGrid(){
   gridItem.forEach(item => {
     item.style = 'backgroundColor: rgba(255,255,255,1) ';
   })
+}
+
+//Deletes every item in the grid,so a new one can be created
+function deleteGrid(){
+  while(container.firstChild){
+    container.removeChild(container.firstChild);
+  }
 }
