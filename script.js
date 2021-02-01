@@ -2,6 +2,7 @@
 
 
 const container = document.querySelector('.container');
+const clrBtn = document.querySelector('#clrBtn');
 var gridItem = [];
 
 // Generating the grid
@@ -39,7 +40,7 @@ function changeColor(e){
 
 //Turns the whole grid white(effectively clearing it)
 function clearGrid(){
-  container.forEach(item => {
+  document.querySelectorAll('.grid-item').forEach(item => {
     item.style = 'backgroundColor: rgba(255,255,255,1) ';
   })
 }
@@ -50,5 +51,8 @@ function deleteGrid(){
     container.removeChild(container.firstChild);
   }
 }
+
+clrBtn.addEventListener('click', ()=>clearGrid());
+
 
 createGrid(gridSize);
