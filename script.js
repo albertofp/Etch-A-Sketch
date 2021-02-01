@@ -2,37 +2,44 @@
 
 
 const container = document.querySelector('.container');
-let gridItem = [];
-
+var gridItem = [];
 
 // Generating the grid
-function returnGridsize(){
-  return 4;
-}
+
+let gridSize = 16; //Will eventually be customizeable, fixed for now
 
 
-function createGrid(){
-  let totalItems = returnGridsize * returnGridsize;
-  container.style.gridTemplateColumns = (`repeat(${returnGridsize}, 1fr`);
-  container.style.gridTemplateRows = (`repeat(${returnGridsize}, 1fr`);
+
+
+function createGrid(gridSize){
+  let totalItems = gridSize * gridSize;
+  var newItem;
+  container.style.gridTemplateColumns = (`repeat(${gridSize}, 1fr`);
+  container.style.gridTemplateRows = (`repeat(${gridSize}, 1fr`);
   for(i=0; i < totalItems ; i++){
     gridItem[i] = document.createElement("div");
     gridItem[i].classList.add("grid-item");
-    gridItem[i].addEventListener('mouseover', changeColor());
-    gridContainer.appendChild(gridItem[i]);
+    newItem = gridItem[i];
+    container.appendChild(newItem);
   }
+  document.querySelectorAll('.grid-item').forEach(item => {
+  item.addEventListener('mouseover', event => {
+    changeColor(item);
+  })
+})
 }
 
+
 function changeColor(e){
-  const red = Math.floor(Math.random() * 256);
-  const green = Math.floor(Math.random() * 256);
-  const blue = Math.floor(Math.random() * 256);
-  e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+  var red = Math.floor(Math.random() * 256);
+  var green = Math.floor(Math.random() * 256);
+  var blue = Math.floor(Math.random() * 256);
+  e.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
 //Turns the whole grid white(effectively clearing it)
 function clearGrid(){
-  gridItem.forEach(item => {
+  container.forEach(item => {
     item.style = 'backgroundColor: rgba(255,255,255,1) ';
   })
 }
@@ -43,3 +50,5 @@ function deleteGrid(){
     container.removeChild(container.firstChild);
   }
 }
+
+createGrid(gridSize);
