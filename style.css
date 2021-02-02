@@ -1,5 +1,6 @@
 html{
 font-family: 'Montserrat', sans-serif;
+background-color: #d6deff;
 }
 
 .title{
@@ -20,4 +21,9 @@ text-align: center;
   border-style: solid;
   border-color: black;
   border-width: 1px;
+}
+
+.buttonContainer{
+  text-align: center;
+  margin-top: 10px;
 }
